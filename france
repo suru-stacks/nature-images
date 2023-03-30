@@ -1,0 +1,60 @@
+Under Android right click on app select new select android resource directory a new window will open like this 
+ 
+Put menu for both directory name and resource type and then press ok. 
+ 
+After that under android menu will appear like above window right click on that  
+ 
+Select menu resource file a new window will open like this  
+ 
+Put file name as menu.xml and press ok 
+
+
+Menu.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:title="Contact us"
+    android:id="@+id/menu1"
+    />
+    <item
+        android:title="About us"
+        android:id="@+id/menu2"
+        /><item
+    android:title="Help"
+    android:id="@+id/menu3"
+    />
+</menu>
+MainActivity.kt:
+package com.example.myapplication
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var optionselected=""
+        when (item?.itemId){
+            R.id.menu1 -> optionselected = "menu1 selected"
+            R.id.menu2 -> optionselected = "menu2 selected"
+            R.id.menu3 -> optionselected = "menu3 selected"
+
+        }
+        Toast.makeText(this,optionselected, Toast.LENGTH_LONG).show()
+
+        return super.onOptionsItemSelected(item)
+    }
+}
