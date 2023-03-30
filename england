@@ -1,0 +1,34 @@
+alert box
+override fun onBackpressed(){
+super
+val builder = alertDialog.Builder(this)
+builder.setTitle()
+builder.setmessage()
+builder.setpositivebutton("yes", {dialoginterface,i->finish()})
+builder.setnegativebutton("NO", {dialoginterface.i->})
+builder.show()
+}
+
+
+
+
+override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val second_page=findViewById<Button>(R.id.button)
+        second_page.setOnClickListener{
+            callActivity()
+        }
+    }
+    private fun callActivity() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("hello")
+        builder.setMessage("are you sure you want to exit")
+        builder.setPositiveButton("Yes",{DialogInterface,i->call()})
+        builder.setNegativeButton("No",{DialogInterface,i->})
+        builder.show()
+
+    }
+    private fun call(){
+        val intent = Intent(this,First_Activity::class.java)
+        startActivity(intent)
